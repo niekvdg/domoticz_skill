@@ -19,9 +19,15 @@ Requirements
 -  `Domoticz`_.
 -  `Mycroft`_.
 
+Installation
+-------------
+Go to ~/mycroft-core/skills
+git clone https://github.com/niekvdg/domoticz_skill
 
 Configuration
 -------------
+
+Configure the Domoticz settings in your Mycroft account: https://account.mycroft.ai/skills
 
 Name your devices in Domoticz like this: "Where What".  Mycroft will look for the device listed
 in Domoticz. However the skill will also look for "What Where" as well.  Devices can also be
@@ -70,12 +76,6 @@ example phrases:
 -  Hey Mycroft what is the outside temperature?
 -  Hey Mycroft lock the front door
 -  Hey Mycroft dim the dining room dimmer 50%
-
-In French (not yet tested) :
-
--  allume la lumière du salon
--  éteind la lumiere du salon
-
 
 Todo
 ----
