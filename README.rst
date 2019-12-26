@@ -21,7 +21,7 @@ Requirements
 
 Installation
 -------------
-Go to ~/mycroft-core/skills
+Go to /opt/mycroft/skills on you Mycroft.
 
 git clone https://github.com/niekvdg/domoticz_skill
 
@@ -58,7 +58,7 @@ Mycroft Settings Page
 -----
 
 The default settings for the domoticz connection and configuration is the local host without
-authentication.  
+authentication.
 
 Usage
 -----
@@ -77,11 +77,6 @@ example phrases:
 -  Hey Mycroft what is the outside temperature?
 -  Hey Mycroft lock the front door
 -  Hey Mycroft dim the dining room dimmer 50%
-
-Todo
-----
-
-Use with Tasker on Android for send command voice to Mycroft.
 
 .. _Python3: https://www.python.org/downloads/
 .. _Mycroft: https://mycroft.ai/

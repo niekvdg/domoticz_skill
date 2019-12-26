@@ -10,12 +10,13 @@ LOGGER = getLogger(__name__)
 
 class Domoticz:
     """Class for controlling Domoticz."""
-    def __init__(self, host, port, protocol, authentication, login, password):
+    def __init__(self, host, port, protocol, authentication, login, password, feedback):
         """Recover settings for accessing to Domoticz instance."""
         self.host = host
         self.port = port
         protocol = protocol
         authentication = authentication
+        feedback = feedback
         if protocol:
             self.protocol = "https"
         else:
@@ -60,6 +61,7 @@ class Domoticz:
                 result = None
                 break
             i += 1
+
         return [idx, result, stype, dlevel]
 
     def findcmd(self, state, action, dlevel):
@@ -105,6 +107,7 @@ class Domoticz:
         """Switch the device in Domoticz."""
         data = []
         data = self.findid(what, where, state)
+        LOGGER.debug("findid : " + str(data))
         idx = data[0]
         result = data[1]
         stype = data[2]
@@ -115,7 +118,7 @@ class Domoticz:
                 try:
                     f = urllib.request.urlopen(self.url + "/json.htm?type=command&param=switch" + stype + "&idx=" + str(idx) + "&switchcmd=" + str(cmd))
                     response = f.read()
-                    LOGGER.debug(str(response))
+                    LOGGER.debug("domoticz response switch : " + str(response))
                     return response
                 except IOError as e:
                     LOGGER.error(str(e) + ' : ' + str(e.read()))

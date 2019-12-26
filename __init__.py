@@ -57,7 +57,8 @@ class DomoticzSkill(MycroftSkill):
             self.settings.get("protocol"),
             self.settings.get("authentication"),
             self.settings.get("username"),
-            self.settings.get("password"))
+            self.settings.get("password"),
+            self.settings.get("feedback"))
         state = message.data.get("StateKeyword")
         what = message.data.get("WhatKeyword")
         where = message.data.get("WhereKeyword")
@@ -71,6 +72,7 @@ class DomoticzSkill(MycroftSkill):
         response = domoticz.switch(state, what, where, action)
         edng = re.compile(str(state).title(), re.I)
         ending = "ed"
+            
         if edng.search('on') or edng.search('off'):
             ending = ""
         if response is None:
@@ -79,6 +81,8 @@ class DomoticzSkill(MycroftSkill):
             self.speak("The " + str(what) + " is already " + str(state).title() + ending)
         elif response is 1:
             self.speak("The " + str(what) + " can not be operated with " + str(state).title())
+        elif self.settings.get("feedback"):
+            self.speak("The " + str(where) + " " + str(what) + " is turned " + str(state).title())
 
     def handle_domoticz_infos_intent(self, message):
         what = message.data.get("WhatKeyword")
@@ -89,7 +93,8 @@ class DomoticzSkill(MycroftSkill):
             self.settings.get("protocol"),
             self.settings.get("authentication"),
             self.settings.get("username"),
-            self.settings.get("password"))
+            self.settings.get("password"),
+            self.settings.get("feedback"))
         data = {
             'what': what,
             'where': where

@@ -54,6 +54,21 @@
                         "value": ""
                     }
                 ]
+            },
+            {
+                "name": "Skill configuration",
+                "fields": [
+                    {
+                        "type": "label",
+                        "label": "Configuration options for skill"
+                    },
+                    {
+                        "name": "feedback",
+                        "type": "checkbox",
+                        "label": "Feedback of action",
+                        "value": "true"
+                    }
+                ]
             }
         ]
     }
