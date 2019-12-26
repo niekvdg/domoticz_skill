@@ -22,6 +22,7 @@ Requirements
 Installation
 -------------
 Go to ~/mycroft-core/skills
+
 git clone https://github.com/niekvdg/domoticz_skill
 
 Configuration
